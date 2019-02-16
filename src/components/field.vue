@@ -6,6 +6,56 @@
 			p(v-show='error') {{ errormsg || ' ' }}
 </template>
 
+<script>
+	export default {
+		props:    ['type', 'name', 'placeholder', 'errormsg'],
+		data() {
+			return {
+				text:   '',
+				active: false,
+				error:  false
+			}
+		},
+		computed: {
+			labelClass() {
+				return {
+					'label-colored': this.active,
+					'label-raised':  this.active || this.text
+				};
+			},
+			inputClass() {
+				return {
+					'input-error':  this.error,
+					'input-active': this.active
+				};
+			}
+		},
+		methods:  {
+			input(e) {
+				this.text = e.target.value;
+			},
+			focusin() {
+				this.active = true;
+				this.offError();
+			},
+			focusout() {
+				this.active = false;
+				if (!this.check())
+					this.onError();
+			},
+			onError() {
+				this.error = true;
+			},
+			offError() {
+				this.error = false;
+			},
+			check() {
+				return this.text;
+			}
+		}
+	}
+</script>
+
 <style lang="stylus" scoped>
 	@import '../components/standard.styl'
 	
@@ -63,53 +113,3 @@
 	.errormsg-leave, .errormsg-enter-to
 		opacity 1
 </style>
-
-<script>
-	export default {
-		props:    ['type', 'name', 'placeholder', 'errormsg'],
-		data() {
-			return {
-				text:   '',
-				active: false,
-				error:  false
-			}
-		},
-		computed: {
-			labelClass() {
-				return {
-					'label-colored': this.active,
-					'label-raised':  this.active || this.text
-				};
-			},
-			inputClass() {
-				return {
-					'input-error':  this.error,
-					'input-active': this.active
-				};
-			}
-		},
-		methods:  {
-			input(e) {
-				this.text = e.target.value;
-			},
-			focusin() {
-				this.active = true;
-				this.offError();
-			},
-			focusout() {
-				this.active = false;
-				if (!this.check())
-					this.onError();
-			},
-			onError() {
-				this.error = true;
-			},
-			offError() {
-				this.error = false;
-			},
-			check() {
-				return this.text;
-			}
-		}
-	}
-</script>

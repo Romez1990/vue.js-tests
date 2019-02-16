@@ -8,6 +8,21 @@
 			input#submit-button(type='button', value='Next')
 </template>
 
+<script>
+	import field from '../components/field.vue';
+	
+	export default {
+		data() {
+			return {
+				msg: 'Welcome to Your Vue.js app'
+			}
+		},
+		components: {
+			field: field
+		}
+	}
+</script>
+
 <style lang="stylus">
 	@import '../components/standard.styl'
 	
@@ -51,18 +66,3 @@
 			padding 10px 15px
 			box-shadow none
 </style>
-
-<script>
-	import field from '../components/field.vue';
-	
-	export default {
-		data() {
-			return {
-				msg: 'Welcome to Your Vue.js app'
-			}
-		},
-		components: {
-			field: field
-		}
-	}
-</script>
