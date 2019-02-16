@@ -1,25 +1,90 @@
-<template lang="pug">
-	#wrapper
-		h2 {{ msg }}
-		cp
+<template>
+	<div id="wrapper">
+		<form>
+			<h1>Registration</h1>
+			<field type="text"
+			       name="login"
+			       placeholder="Login"
+			       errormsg="Enter your login"></field>
+			<field type="password"
+			       name="password"
+			       placeholder="Password"
+			       errormsg="Enter your password"></field>
+			<field type="password"
+			       name="password-confirmation"
+			       placeholder="Password confirmation"
+			       errormsg="Confirm your password"></field>
+			<input type="button" id="submit-button" value="Next">
+		</form>
+	</div>
 </template>
 
+<style lang="stylus">
+	@import '../components/standard.styl'
+	
+	body {
+		font-family: sans-serif;
+	}
+	
+	#wrapper {
+		height: 100vh;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	
+	form {
+		padding: 40px 30px;
+		border-radius: 5px;
+		box-shadow: 1px 2px 5px 2px rgba(0, 0, 0, 0.22);
+		display: flex;
+		flex-direction: column;
+		
+		h1 {
+			margin-bottom: 5px;
+		}
+		
+		#submit-button {
+			nice-button(#08f, #eee, #023)
+			margin-top: 4px;
+			align-self: flex-end;
+		}
+	}
+	
+	@media screen and (max-width: 368px) {
+		#wrapper {
+			display: block;
+		}
+		
+		form {
+			padding: 10px 15px;
+			box-shadow: none;
+		}
+	}
+	
+	@media screen and (max-height: 430px) {
+		#wrapper {
+			display: block;
+		}
+		
+		form {
+			padding: 10px 15px;
+			box-shadow: none;
+		}
+	}
+</style>
+
 <script>
-	import cp from '../components/cp.vue'
+	import field from '../components/field.vue';
 	
 	export default {
 		data() {
 			return {
-				msg: 'Blue'
+				msg: 'Welcome to Your Vue.js app'
 			}
 		},
-		components: { cp }
+		components: {
+			field: field
+		}
 	}
 </script>
-
-<style lang="stylus" scoped>
-	@import '../components/standard.styl'
-	
-	h2
-		color blue
-</style>
