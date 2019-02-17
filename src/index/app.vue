@@ -2,9 +2,28 @@
 	#wrapper
 		form
 			h1 Registration
-			field(type='text', name='login', placeholder='Login', errormsg='Enter your login')
-			field(type='password', name='password', placeholder='Password', errormsg='Enter your password')
-			field(type='password', name='password-confirmation', placeholder='Password confirmation', errormsg='Confirm your password')
+			
+			field(type='text',
+			name='login',
+			placeholder='Login',
+			pattern='[\\w\\d]{6,}',
+			required='true',
+			errormsg='Enter your login')
+			
+			field(type='password',
+			name='password',
+			placeholder='Password',
+			pattern='.{6,}',
+			required='true',
+			errormsg='Enter your password')
+			
+			field(type='password',
+			name='password-confirmation',
+			placeholder='Password confirmation',
+			pattern='.{6,}',
+			required='true',
+			errormsg='Confirm your password')
+			
 			input#submit-button(type='button', value='Next')
 </template>
 

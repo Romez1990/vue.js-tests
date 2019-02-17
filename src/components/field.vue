@@ -1,14 +1,28 @@
 <template lang="pug">
 	.field
-		label(:for='name', :class='labelClass') {{ placeholder }}
-		input(:type='type', :name='name', :id='name', :class='inputClass', @input='input', @focus='focusin', @focusout='focusout')
+		label(:for='name',
+		:class='labelClass')
+			| {{ placeholder }}
+		
+		input(ref='input',
+		:type='type',
+		:pattern='pattern',
+		:required='required === "true"',
+		:name='name',
+		:id='name',
+		:class='inputClass',
+		@input='input',
+		@focus='focusin',
+		@focusout='focusout')
+		
 		transition(name='errormsg')
-			p(v-show='error') {{ errormsg || ' ' }}
+			p(v-show='error')
+				| {{ errormsg || ' ' }}
 </template>
 
 <script>
 	export default {
-		props:    ['type', 'name', 'placeholder', 'errormsg'],
+		props:    ['type', 'name', 'placeholder', 'pattern', 'required', 'errormsg'],
 		data() {
 			return {
 				text:   '',
@@ -50,13 +64,11 @@
 				this.error = false;
 			},
 			check() {
-				return this.text;
+				return this.$refs.input.checkValidity();
 			}
 		}
 	}
 </script>
-
-
 
 <style lang="stylus" scoped>
 	@import '../components/standard.styl'
