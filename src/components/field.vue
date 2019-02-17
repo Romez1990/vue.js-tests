@@ -56,26 +56,30 @@
 	}
 </script>
 
+
+
 <style lang="stylus" scoped>
 	@import '../components/standard.styl'
-	
-	.field
-		position relative
-		padding-top 20px
-	
-	label, input
-		font-size 18px
 	
 	normal = #b4b4b4
 	active = #0061ff
 	error = #ff4c22
+	label-anim-time = 0.25s
+	error-anim-time = 0.4s
+	
+	.field
+		position relative
+		padding 20px 0 30px
+	
+	label, input
+		font-size 18px
 	
 	label
 		color normal
 		padding 0 7px 10px
 		position absolute
 		top 24px
-		transition 0.25s ease-in-out
+		transition label-anim-time ease-in-out
 		transition-property top, color, font-size
 	
 	.label-colored
@@ -92,6 +96,7 @@
 		border none
 		border-radius 5px
 		width 100%
+		transition box-shadow error-anim-time ease-in-out
 	
 	.input-active
 		box-shadow 0 0 0 0.8px active !important
@@ -104,12 +109,11 @@
 		color error
 		font-size 14px
 		padding 7px 7px
-		display block !important
-		opacity 0
+		position absolute
 	
 	.errormsg-enter-active, .errormsg-leave-active
-		transition opacity 0.625s
+		transition opacity error-anim-time ease-in-out
 	
-	.errormsg-leave, .errormsg-enter-to
-		opacity 1
+	.errormsg-enter, .errormsg-leave-to
+		opacity 0
 </style>
