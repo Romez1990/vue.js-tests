@@ -10,6 +10,13 @@
 			required='true',
 			errormsg='Enter your login')
 			
+			field(type='email',
+			name='email',
+			placeholder='Email',
+			pattern='[\\w\\d]+@[\\w\\d]+\\.[\\w\\d]+',
+			required='true',
+			errormsg='Enter your email')
+			
 			field(type='password',
 			name='password',
 			placeholder='Password',
