@@ -16,8 +16,7 @@
 		@focusout='focusout')
 		
 		transition(name='errormsg')
-			p(v-show='error')
-				| {{ errormsg || ' ' }}
+			p(v-show='error') {{ errormsg }}
 </template>
 
 <script>
