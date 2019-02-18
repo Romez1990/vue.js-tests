@@ -1,18 +1,18 @@
 <template lang="pug">
 	.field
-		label(:for='name',
+		label(:for='name'
 		:class='labelClass')
 			| {{ placeholder }}
 		
-		input(ref='input',
-		:type='type',
-		:pattern='pattern',
-		:required='required === "true"',
-		:name='name',
-		:id='name',
-		:class='inputClass',
-		@input='input',
-		@focus='focusin',
+		input(ref='input'
+		:type='type'
+		:pattern='pattern'
+		:required='required === "true"'
+		:name='name'
+		:id='name'
+		:class='inputClass'
+		@input='input'
+		@focus='focusin'
 		@focusout='focusout')
 		
 		transition(name='errormsg')
