@@ -8,7 +8,7 @@
 		:name='name'
 		:type='type'
 		:pattern='pattern'
-		:required='required === "true"'
+		:required='required'
 		@input='input'
 		@focus='focusin'
 		@focusout='focusout')
@@ -19,7 +19,32 @@
 
 <script>
 	export default {
-		props:    ['type', 'name', 'placeholder', 'pattern', 'required', 'errormsg'],
+		props:    {
+			type:        {
+				type:     String,
+				required: true
+			},
+			name:        {
+				type:     String,
+				required: true
+			},
+			placeholder: {
+				type:    String,
+				default: ''
+			},
+			pattern:     {
+				type:    String,
+				default: ''
+			},
+			errormsg:    {
+				type:    String,
+				default: ''
+			},
+			required:    {
+				type:    Boolean,
+				default: false
+			}
+		},
 		data() {
 			return {
 				text:   '',

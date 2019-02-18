@@ -7,29 +7,29 @@
 			name='login'
 			placeholder='Login'
 			pattern='[\\w\\d]{6,}'
-			required='true'
-			errormsg='Enter your login')
+			errormsg='Enter your login'
+			required)
 			
 			field(type='email'
 			name='email'
 			placeholder='Email'
 			pattern='[\\w\\d]+@[\\w\\d]+\\.[\\w\\d]+'
-			required='true'
-			errormsg='Enter your email')
+			errormsg='Enter your email'
+			required)
 			
 			field(type='password'
 			name='password'
 			placeholder='Password'
 			pattern='.{6,}'
-			required='true'
-			errormsg='Enter your password')
+			errormsg='Enter your password'
+			required)
 			
 			field(type='password'
 			name='password-confirmation'
 			placeholder='Password confirmation'
 			pattern='.{6,}'
-			required='true'
-			errormsg='Confirm your password')
+			errormsg='Confirm your password'
+			required)
 			
 			input#submit-button(type='button' value='Next')
 </template>
