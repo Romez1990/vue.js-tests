@@ -118,10 +118,10 @@
 		transition-property top, color, font-size
 	
 	.label-colored
-		color active !important
+		color active
 	
 	.label-raised
-		top 0 !important
+		top 0
 		font-size 15px
 	
 	input
@@ -134,11 +134,11 @@
 		transition box-shadow error-anim-time ease-in-out
 	
 	.input-active
-		box-shadow 0 0 0 0.8px active !important
+		box-shadow 0 0 0 0.8px active
 	
 	.input-error
-		//box-shadow 0 0 8px 2px error !important
-		box-shadow 0 0 0 1px error, 0 0 10px error !important
+		//box-shadow 0 0 8px 2px error
+		box-shadow 0 0 0 1px error, 0 0 10px error
 	
 	p
 		color error
