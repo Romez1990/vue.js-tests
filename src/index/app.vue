@@ -47,9 +47,7 @@
 				msg: 'Welcome to Your Vue.js app'
 			}
 		},
-		components: {
-			field: field
-		},
+		components: { field },
 		methods:    {
 			submit() {
 				let data = {};
