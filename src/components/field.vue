@@ -72,18 +72,11 @@
 			},
 			focusin() {
 				this.active = true;
-				this.offError();
+				this.error  = false;
 			},
 			focusout() {
 				this.active = false;
-				if (!this.check())
-					this.onError();
-			},
-			onError() {
-				this.error = true;
-			},
-			offError() {
-				this.error = false;
+				this.error  = !this.check();
 			},
 			check() {
 				return this.$refs.input.checkValidity();
