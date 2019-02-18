@@ -56,6 +56,13 @@
 				for (const key in this.$refs) {
 					data[key] = this.$refs[key].submit();
 				}
+				
+				if (data['password'] !== data['password-confirmation']) {
+					this.$refs['password-confirmation'].error    = true;
+					this.$refs['password-confirmation'].errormsg = 'Password does not match';
+					return;
+				}
+				
 				console.log(data);
 			}
 		}
