@@ -3,35 +3,39 @@
 		form
 			h1 Registration
 			
-			field(type='text'
+			field(ref='login'
+			type='text'
 			name='login'
 			placeholder='Login'
 			pattern='[\\w\\d]{6,}'
 			errormsg='Enter your login'
 			required)
 			
-			field(type='email'
+			field(ref='email'
+			type='email'
 			name='email'
 			placeholder='Email'
 			pattern='[\\w\\d]+@[\\w\\d]+\\.[\\w\\d]+'
 			errormsg='Enter your email'
 			required)
 			
-			field(type='password'
+			field(ref='password'
+			type='password'
 			name='password'
 			placeholder='Password'
 			pattern='.{6,}'
 			errormsg='Enter your password'
 			required)
 			
-			field(type='password'
+			field(ref='password-confirmation'
+			type='password'
 			name='password-confirmation'
 			placeholder='Password confirmation'
 			pattern='.{6,}'
 			errormsg='Confirm your password'
 			required)
 			
-			input#submit-button(type='button' value='Next')
+			input#submit-button(type='button' value='Next' @click='submit')
 </template>
 
 <script>
@@ -45,6 +49,15 @@
 		},
 		components: {
 			field: field
+		},
+		methods:    {
+			submit() {
+				let data = {};
+				for (const key in this.$refs) {
+					data[key] = this.$refs[key].submit();
+				}
+				console.log(data);
+			}
 		}
 	}
 </script>

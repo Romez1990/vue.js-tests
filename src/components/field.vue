@@ -80,6 +80,14 @@
 			},
 			check() {
 				return this.$refs.input.checkValidity();
+			},
+			submit() {
+				if (!this.check()) {
+					this.error = true;
+					return false;
+				}
+				
+				return this.text;
 			}
 		}
 	}
