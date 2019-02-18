@@ -1,16 +1,14 @@
 <template lang="pug">
 	.field
-		label(:for='name'
-		:class='labelClass')
-			| {{ placeholder }}
+		label(:class='labelClass' :for='name') {{ placeholder }}
 		
 		input(ref='input'
+		:class='inputClass'
+		:id='name'
+		:name='name'
 		:type='type'
 		:pattern='pattern'
 		:required='required === "true"'
-		:name='name'
-		:id='name'
-		:class='inputClass'
 		@input='input'
 		@focus='focusin'
 		@focusout='focusout')
