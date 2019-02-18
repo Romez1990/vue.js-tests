@@ -76,15 +76,7 @@
 			margin-top 4px
 			align-self flex-end
 	
-	@media screen and (max-width 368px)
-		#wrapper
-			display block
-		
-		form
-			padding 10px 15px
-			box-shadow none
-	
-	@media screen and (max-height 430px)
+	@media screen and (max-width 375px), screen and (max-height 487px)
 		#wrapper
 			display block
 		
