@@ -3,57 +3,74 @@
 		form
 			h1 Registration
 			
-			field(ref='login'
-			type='text'
-			name='login'
-			placeholder='Login'
-			pattern='[\\w\\d]{6,}'
-			errormsg='Enter your login'
-			required)
-			
-			field(ref='email'
-			type='email'
-			name='email'
-			placeholder='Email'
-			pattern='[\\w\\d]+@[\\w\\d]+\\.[\\w\\d]+'
-			errormsg='Enter your email'
-			required)
-			
-			field(ref='password'
-			type='password'
-			name='password'
-			placeholder='Password'
-			pattern='.{6,}'
-			errormsg='Enter your password'
-			required)
-			
-			field(ref='password-confirmation'
-			type='password'
-			name='password-confirmation'
-			placeholder='Password confirmation'
-			pattern='.{6,}'
-			errormsg='Confirm your password'
-			required)
+			#fields(v-for='field in fields')
+				field(:ref='field.name'
+				:type='field.type'
+				:name='field.name'
+				:placeholder='field.placeholder'
+				:pattern='field.pattern'
+				:errormsg='field.errormsg'
+				:required='field.required')
 			
 			input#submit-button(type='button' value='Next' @click='submit')
 </template>
 
 <script>
-	import field from '../components/field.vue';
+	import field from '../components/field.vue'
 	
 	export default {
+		data() {
+			return {
+				fields: [
+					{
+						name:        'login',
+						type:        'text',
+						placeholder: 'Login',
+						pattern:     '[\\w\\d]{6,}',
+						errormsg:    'Enter your login',
+						required:    true
+					},
+					{
+						name:        'email',
+						type:        'email',
+						placeholder: 'Email',
+						pattern:     '[\\w\\d]+@[\\w\\d]+\\.[\\w\\d]+',
+						errormsg:    'Enter your email',
+						required:    true
+					},
+					{
+						name:        'password',
+						type:        'password',
+						placeholder: 'Password',
+						pattern:     '.{6,}',
+						errormsg:    'Enter your password',
+						required:    true
+					},
+					{
+						name:        'password-confirmation',
+						type:        'password',
+						placeholder: 'Password confirmation',
+						pattern:     '.{6,}',
+						errormsg:    'Confirm your password',
+						required:    true
+					}
+				]
+			}
+		},
 		components: { field },
 		methods:    {
 			submit() {
 				let data = {};
 				for (const key in this.$refs) {
-					data[key] = this.$refs[key].submit();
+					data[key] = this.$refs[key][0].submit();
 				}
 				
 				if (data['password'] !== data['password-confirmation']) {
-					this.$refs['password-confirmation'].error    = true;
-					this.$refs['password-confirmation'].errormsg = 'Password does not match';
-					return;
+					this.$refs['password-confirmation'][0].error    = true;
+					this.$refs['password-confirmation'][0].errormsg = 'Password does not match';
+					data['password-confirmation']                   = false;
+				} else {
+					data['password-confirmation'] = true;
 				}
 				
 				console.log(data);
