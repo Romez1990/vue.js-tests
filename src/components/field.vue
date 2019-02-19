@@ -10,8 +10,8 @@
 		:pattern='pattern'
 		:required='required'
 		v-model='text'
-		@focus='focusin'
-		@focusout='focusout')
+		@focus='activate'
+		@focusout='check')
 		
 		transition(name='errormsg')
 			p(v-show='error') {{ errormsg }}
@@ -67,19 +67,13 @@
 			}
 		},
 		methods:  {
-			focusin() {
+			activate() {
 				this.active = true;
 				this.error  = false;
 			},
-			focusout() {
-				this.active = false;
-				this.error  = !this.check();
-			},
 			check() {
-				return this.$refs.input.checkValidity();
-			},
-			submit() {
-				if (!this.check()) {
+				this.active = false;
+				if (!this.$refs.input.checkValidity()) {
 					this.error = true;
 					return false;
 				}

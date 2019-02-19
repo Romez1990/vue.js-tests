@@ -62,7 +62,7 @@
 			submit() {
 				let data = {};
 				for (const key in this.$refs) {
-					data[key] = this.$refs[key][0].submit();
+					data[key] = this.$refs[key][0].check();
 				}
 				
 				if (data['password'] !== data['password-confirmation']) {
