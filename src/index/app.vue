@@ -8,8 +8,7 @@
 				:type='field.type'
 				:name='field.name'
 				:placeholder='field.placeholder'
-				:pattern='field.pattern'
-				:errormsg='field.errormsg'
+				:validations='field.validations'
 				:required='field.required')
 			
 			input#submit-button(type='button' value='Next' @click='submit')
@@ -26,32 +25,48 @@
 						name:        'login',
 						type:        'text',
 						placeholder: 'Login',
-						pattern:     '[\\w\\d]{6,}',
-						errormsg:    'Enter your login',
+						validations: [
+							{
+								pattern:  /[\w\d]{6,}/,
+								errormsg: 'Enter your login'
+							}
+						],
 						required:    true
 					},
 					{
 						name:        'email',
 						type:        'email',
 						placeholder: 'Email',
-						pattern:     '[\\w\\d]+@[\\w\\d]+\\.[\\w\\d]+',
-						errormsg:    'Enter your email',
+						validations: [
+							{
+								pattern:  /[\w\d]+@[\w\d]+\.[\w\d]+/,
+								errormsg: 'Enter your email'
+							}
+						],
 						required:    true
 					},
 					{
 						name:        'password',
 						type:        'password',
 						placeholder: 'Password',
-						pattern:     '.{6,}',
-						errormsg:    'Enter your password',
+						validations: [
+							{
+								pattern:  /.{6,}/,
+								errormsg: 'Enter your password'
+							}
+						],
 						required:    true
 					},
 					{
 						name:        'password-confirmation',
 						type:        'password',
 						placeholder: 'Password confirmation',
-						pattern:     '.{6,}',
-						errormsg:    'Confirm your password',
+						validations: [
+							{
+								pattern:  /.{6,}/,
+								errormsg: 'Confirm your password'
+							}
+						],
 						required:    true
 					}
 				]

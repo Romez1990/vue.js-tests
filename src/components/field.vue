@@ -2,12 +2,10 @@
 	.field
 		label(:class='labelClass' :for='name') {{ placeholder }}
 		
-		input(ref='input'
-		:class='inputClass'
+		input(:class='inputClass'
 		:id='name'
 		:name='name'
 		:type='type'
-		:pattern='pattern'
 		:required='required'
 		v-model='text'
 		@focus='activate'
@@ -18,6 +16,8 @@
 </template>
 
 <script>
+	import match from './match.js'
+	
 	export default {
 		props:    {
 			type:        {
@@ -32,13 +32,9 @@
 				type:    String,
 				default: ''
 			},
-			pattern:     {
-				type:    String,
-				default: ''
-			},
-			errormsg:    {
-				type:    String,
-				default: ''
+			validations: {
+				type:    Array,
+				default: []
 			},
 			required:    {
 				type:    Boolean,
@@ -47,9 +43,10 @@
 		},
 		data() {
 			return {
-				text:   '',
-				active: false,
-				error:  false
+				text:     '',
+				active:   false,
+				error:    false,
+				errormsg: ''
 			}
 		},
 		computed: {
@@ -73,9 +70,12 @@
 			},
 			check() {
 				this.active = false;
-				if (!this.$refs.input.checkValidity()) {
-					this.error = true;
-					return false;
+				for (let validation of this.validations) {
+					if (!match(validation.pattern, this.text)) {
+						this.error    = true;
+						this.errormsg = validation.errormsg;
+						return false;
+					}
 				}
 				
 				return this.text;
