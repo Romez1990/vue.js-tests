@@ -9,7 +9,7 @@
 		:type='type'
 		:pattern='pattern'
 		:required='required'
-		@input='input'
+		v-model='text'
 		@focus='focusin'
 		@focusout='focusout')
 		
@@ -67,9 +67,6 @@
 			}
 		},
 		methods:  {
-			input(e) {
-				this.text = e.target.value;
-			},
 			focusin() {
 				this.active = true;
 				this.error  = false;
