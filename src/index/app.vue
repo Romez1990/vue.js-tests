@@ -22,6 +22,30 @@
 			return {
 				fields: [
 					{
+						name:        'first-name',
+						type:        'text',
+						placeholder: 'First name',
+						validations: [
+							{
+								pattern:  /.+/,
+								errormsg: 'Enter your first name'
+							}
+						],
+						required:    true
+					},
+					{
+						name:        'last-name',
+						type:        'text',
+						placeholder: 'Last name',
+						validations: [
+							{
+								pattern:  /.+/,
+								errormsg: 'Enter your last name'
+							}
+						],
+						required:    true
+					},
+					{
 						name:        'login',
 						type:        'text',
 						placeholder: 'Login',
