@@ -147,7 +147,8 @@
 		align-items center
 	
 	form
-		width 350px
+		width 400px
+		margin 20px
 		padding 40px 30px
 		box-sizing border-box
 		border-radius 5px
@@ -163,12 +164,17 @@
 			margin-top 4px
 			align-self flex-end
 	
-	@media screen and (max-width 370px), screen and (max-height 495px)
+	@media screen and (max-width 440px)
 		#wrapper
 			display block
 		
 		form
+			margin 0
 			width 100%
 			padding 10px 15px
 			box-shadow none
+	
+	@media screen and (max-height 673px)
+		#wrapper
+			align-items flex-start
 </style>
