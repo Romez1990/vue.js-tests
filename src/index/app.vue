@@ -42,11 +42,6 @@
 	import field from '../components/field.vue';
 	
 	export default {
-		data() {
-			return {
-				msg: 'Welcome to Your Vue.js app'
-			}
-		},
 		components: { field },
 		methods:    {
 			submit() {
