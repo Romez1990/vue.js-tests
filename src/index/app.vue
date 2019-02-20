@@ -27,8 +27,16 @@
 						placeholder: 'Login',
 						validations: [
 							{
-								pattern:  /[\w\d]{6,}/,
+								pattern:  /.+/,
 								errormsg: 'Enter your login'
+							},
+							{
+								pattern:  /.{6,}/,
+								errormsg: 'Use 6 or more characters'
+							},
+							{
+								pattern:  /[\w\d]+/,
+								errormsg: 'You can only use letters and numbers'
 							}
 						],
 						required:    true
@@ -39,8 +47,12 @@
 						placeholder: 'Email',
 						validations: [
 							{
+								pattern:  /.+/,
+								errormsg: 'Enter your email address'
+							},
+							{
 								pattern:  /[\w\d]+@[\w\d]+\.[\w\d]+/,
-								errormsg: 'Enter your email'
+								errormsg: 'This is not a valid email address'
 							}
 						],
 						required:    true
@@ -51,8 +63,12 @@
 						placeholder: 'Password',
 						validations: [
 							{
-								pattern:  /.{6,}/,
+								pattern:  /.+/,
 								errormsg: 'Enter your password'
+							},
+							{
+								pattern:  /.{6,}/,
+								errormsg: 'Use 6 or more characters'
 							}
 						],
 						required:    true
@@ -63,7 +79,7 @@
 						placeholder: 'Password confirmation',
 						validations: [
 							{
-								pattern:  /.{6,}/,
+								pattern:  /.+/,
 								errormsg: 'Confirm your password'
 							}
 						],
