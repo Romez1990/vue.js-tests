@@ -114,7 +114,15 @@
 		},
 		components: { field },
 		methods:    {
-			checkPasswordMatch(data) {
+			getData() {
+				let data = {};
+				for (const key in this.$refs) {
+					data[key] = this.$refs[key][0].check();
+				}
+				return data;
+			},
+			checkPasswordMatch() {
+				const data = this.getData();
 				if (data['password'] !== data['password-confirmation']) {
 					this.$refs['password-confirmation'][0].error    = true;
 					this.$refs['password-confirmation'][0].errormsg = 'Password does not match';
@@ -124,14 +132,8 @@
 				}
 			},
 			submit() {
-				let data = {};
-				for (const key in this.$refs) {
-					data[key] = this.$refs[key][0].check();
-				}
-				
 				this.checkPasswordMatch(data);
-				
-				console.log(data);
+				console.log(this.getData());
 			}
 		}
 	}
